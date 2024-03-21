@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-            @if (session()->has('msg'))
-            <div class="alert alert-success" role="alert">
-                {{session()->get('msg')}}
-            </div>
-            @endif
+    @if (session()->has('msg'))
+    <div class="alert alert-success" role="alert">
+        {{session()->get('msg')}}
+    </div>
+    @endif
     <div class="row">
         <div class="col-6">
             <div class="card">
@@ -23,7 +23,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input id="inputphone" name="phone" type="text" class="form-control" placeholder="Nomor Telepon (628XXXX)" required>
+                            <input id="inputphone" name="phone" type="text" class="form-control" placeholder="Nomor Telepon (08XXXX)" required>
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
