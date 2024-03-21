@@ -23,7 +23,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input id="inputphone" name="phone" type="text" class="form-control" placeholder="Nomor Telepon (08XXXX)" required>
+                            <input id="inputphone" name="phone" type="text" class="form-control" placeholder="Nomor Telepon (8XXXX)" required>
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
