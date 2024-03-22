@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if(Auth::user() != null)
+<script>
+    window.location = "/home";
+</script>
+@else
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -70,4 +75,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection

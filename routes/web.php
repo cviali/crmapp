@@ -23,6 +23,7 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
+Route::get('/agent-list', 'AgentListController@index');
 Route::get('/agent', 'AgentController@index');
 
 Route::post('/add-customer', 'AdminController@addCustomer')->name('add-customer');
