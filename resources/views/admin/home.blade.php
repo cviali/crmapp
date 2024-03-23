@@ -31,20 +31,39 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary w-100">Input</button>
+                            <button type="submit" class="btn btn-primary w-100">Tambah</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-6">
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">Upload Data</div>
                 <div class="card-body">
-                    <form role="form" method="POST" action="">
+
+                    <form action="{{ route('import.excel') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary w-100">Input</button>
+                            <div class="custom-file">
+                                <input type="file" name="file" id="file" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input id="inputsource" name="source" type="text" class="form-control" placeholder="Nama Database" required>
+                            @error('source')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary w-100">Upload</button>
                         </div>
                     </form>
                 </div>

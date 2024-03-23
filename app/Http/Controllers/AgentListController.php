@@ -20,7 +20,6 @@ class AgentListController extends Controller
             $user = Auth::user();
             $query->where([['name', '=', 'agent'], ['admin_id', '=', $user->id]]);
         })->get();
-        dd($agents);
         return view('admin.agentlist')->with(compact('agents'));
     }
 }
