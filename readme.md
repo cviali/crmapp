@@ -1,6 +1,6 @@
 # crmapp
 
-work in progress simple customer relationship management platform
+simple customer relationship management platform
 
 expected backend features:
 
@@ -8,8 +8,7 @@ expected backend features:
 - input customer data manually
 - import data from excel
 - agent account can recieve the customer data to be contacted individually
+- agent performance indicator
 
 # todo
-
-- agent performance indicator
 - some documentations
