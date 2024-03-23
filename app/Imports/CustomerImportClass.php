@@ -3,9 +3,9 @@
 namespace App\Imports;
 
 use App\Customer;
-use Maatwebsite\Excel\Concerns\toModel;
+use Maatwebsite\Excel\Concerns\ToModel;
 
-class CustomerImportClass implements toModel
+class CustomerImportClass implements ToModel
 {
     public function  __construct($source)
     {
