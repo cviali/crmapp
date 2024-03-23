@@ -24,7 +24,9 @@ Auth::routes([
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
 Route::get('/agent-list', 'AgentListController@index');
+Route::get('/database-list', 'DatabaseListController@index');
 Route::get('/agent-detail/{id}', 'AgentDetailController@index');
+Route::get('/database-detail/{source}', 'DatabaseDetailController@index');
 Route::get('/agent', 'AgentController@index');
 Route::get('/import-excel', 'ExcelImportController@index')->name('import.excel');
 

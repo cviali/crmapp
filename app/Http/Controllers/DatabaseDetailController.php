@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use App\User;
-use Carbon\Carbon;
 
-class AgentDetailController extends Controller
+class DatabaseDetailController extends Controller
 {
     public function __construct()
     {
@@ -14,17 +12,14 @@ class AgentDetailController extends Controller
         $this->middleware('role:admin');
     }
 
-    public function index($id)
+    public function index($source)
     {
-        $date = Carbon::today();
-        $agent = User::where('id', '=', $id)->first();
-        $data = Customer::where([['handler_id', '=', $id], ['updated_at', '>', $date]])->get();
-        // dd($date);
+        $data = Customer::where('source', '=', $source)->get();
         $total = $data->count();
         $inprogress = $data->where('status_id', '=', 1)->count();
         $active = $data->where('status_id', '=', 2)->count();
         $inactive = $data->where('status_id', '=', 3)->count();
         $notinterested = $data->where('status_id', '=', 4)->count();
-        return view('admin.agentdetail')->with(compact('agent', 'date', 'total', 'inprogress', 'active', 'inactive', 'notinterested'));
+        return view('admin.databasedetail')->with(compact('source', 'total', 'inprogress', 'active', 'inactive', 'notinterested'));
     }
 }

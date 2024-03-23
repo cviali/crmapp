@@ -52,6 +52,9 @@
                                     {{ __('Home') }}
                                 </a>
                                 @if (Auth::user()->roles->first()->name == 'admin')
+                                <a class="dropdown-item" href="{{ url('/database-list') }}">
+                                    {{ __('Database List') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('register') }}">
                                     {{ __('Register Agent') }}
                                 </a>

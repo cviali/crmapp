@@ -31,7 +31,7 @@ class AdminController extends Controller
         Customer::create([
             'name' => $request->name,
             'phone' => $request->phone,
-            'source' => 'Admin',
+            'source' => 'manual',
             'status_id' => 0
         ]);
 
