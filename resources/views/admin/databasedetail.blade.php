@@ -17,7 +17,7 @@
         <div class="col-6 mb-3">
             <div class="card">
                 <div class="card-body">
-                    <div>Total Dikontak</div>
+                    <div>Total Data</div>
                     <h1>{{$total}}</h1>
                 </div>
             </div>
