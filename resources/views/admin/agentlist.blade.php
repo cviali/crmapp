@@ -8,6 +8,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Username</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
                 <th scope="row">{{$agent->id}}</th>
                 <td>{{$agent->name}}</td>
                 <td>{{$agent->username}}</td>
+                <td><a class="btn btn-primary" href='/agent-detail/{{$agent->id}}'>Performa</a></td>
             </tr>
             @endforeach
         </tbody>
