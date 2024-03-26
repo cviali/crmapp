@@ -11,7 +11,7 @@ use App\User;
             <div>◀ Kembali</div>
         </a>
         <div>
-            <a class="btn btn-primary" href="/excel-export/{{$source}}">Export Database</a>
+            <a class="btn btn-primary" href="/export-excel/{{$source}}">Export Database</a>
         </div>
     </div>
     <div class="row">
