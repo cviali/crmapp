@@ -6,7 +6,7 @@
         <div class="mb-4">◀ Kembali</div>
     </a>
     <div class="row">
-        <div class="col-6 mb-3">
+        <div class="col-md-6 col-12 mb-3">
             <div class="card">
                 <div class="card-body">
                     <div>Nama Database</div>
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 mb-3">
+        <div class="col-md-6 col-12 mb-3">
             <div class="card">
                 <div class="card-body">
                     <div>Total Data</div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3 col-12 mb-3">
             <div class="card text-primary">
                 <div class="card-body">
                     <div>Sedang Dikontak</div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3 col-12 mb-3">
             <div class="card text-success">
                 <div class="card-body">
                     <div>WhatsApp Aktif</div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3 col-12 mb-3">
             <div class="card text-danger">
                 <div class="card-body">
                     <div>WhatsApp Tidak Aktif</div>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3 col-12 mb-3">
             <div class="card text-secondary">
                 <div class="card-body">
                     <div>Tidak Tertarik</div>
