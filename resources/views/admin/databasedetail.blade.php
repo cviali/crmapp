@@ -78,7 +78,11 @@ use App\User;
             <tr>
                 <td>{{$customer->name}}</td>
                 <td>{{$customer->phone}}</td>
-                <td>{{User::where('id', '=', $customer->handler_id)->first()->name}}</td>
+                @if(User::where('id', '=', $customer->handler_id)->first()->name == null)
+                <td>{{$customer->handler_id}}</td>
+                @else
+                <td>User::where('id', '=', $customer->handler_id)->first()->name</td>
+                @endif
                 @switch($customer->status_id)
                 @case(0)
                 <td>Belum Dikontak</td>
