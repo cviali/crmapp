@@ -13,8 +13,13 @@ class CustomerController extends Controller
     {
         $handler = Auth::user();
         $customer = Customer::where([['id', '=', $request->id]])->first();
-        $customer->update(['status_id' => 1]);
-        $customer->update(['handler_id' => $handler->id]);
+        // dd($customer->handler_id);
+        if ($customer->handler_id == null) {
+            $customer->update(['status_id' => 1]);
+            $customer->update(['handler_id' => $handler->id]);
+        } else {
+            session()->flash('msg', 'Customer sudah di handle oleh agent lain.');
+        }
         // dd($customer);
 
         return redirect()->back();

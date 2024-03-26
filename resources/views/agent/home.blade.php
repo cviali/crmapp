@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+    @if (session()->has('msg'))
+    <div class="alert alert-warning" role="alert">
+        {{session()->get('msg')}}
+    </div>
+    @endif
     @if(isset($customer))
     <div class="modal fade" id="followupModal" tabindex="-1" role="dialog" aria-labelledby="followupModalLabel" aria-hidden="true">
         <form role="form" method="POST" action="{{route('update-contact')}}">
