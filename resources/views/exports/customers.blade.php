@@ -16,7 +16,11 @@ use App\User;
         <tr>
             <td>{{$customer->name}}</td>
             <td>{{$customer->phone}}</td>
+            @if(User::where('id', '=', $customer->handler_id)->first() == null)
+            <td>-</td>
+            @else
             <td>{{User::where('id', '=', $customer->handler_id)->first()->name}}</td>
+            @endif
             @switch($customer->status_id)
             @case(0)
             <td>Belum Dikontak</td>
