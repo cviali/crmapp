@@ -1,10 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <form role="form" method="POST" action="{{route('agent-password')}}">
+        <input type="hidden" name="id" value="{{$agent->id}}" />
+        @csrf
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Ganti Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h1>{{$agent->name}}</h1>
+                    <div class="form-group">
+                        <input id="inputpassword" name="password" type="password" class="form-control" placeholder="Password Baru">
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center flex-wrap">
+                    <button type="submit" name="status" value="2" class="btn btn-primary mb-2">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <form role="form" method="POST" action="/agent-delete/{{$agent->id}}">
+        <input type="hidden" name="id" value="{{$agent->id}}" />
+        @csrf
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h1>{{$agent->name}}</h1>
+                </div>
+                <div class="modal-footer d-flex justify-content-center flex-wrap">
+                    <button data-dismiss="modal" aria-label="Close" class="btn btn-secondary mb-2">Batal</button>
+                    <button type="submit" name="status" value="2" class="btn btn-danger mb-2">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 <div class="container">
-    <a href="/agent-list">
-        <div class="mb-4">◀ Kembali</div>
-    </a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="/agent-list">
+            <div>◀ Kembali</div>
+        </a>
+        <div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#passwordModal">Ganti Password</button>
+            <button class=" btn btn-danger" data-toggle="modal" data-target="#deleteModal">Hapus Agent</button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-4 col-12 mb-3">
             <div class="card">

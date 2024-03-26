@@ -18,7 +18,7 @@ class AgentListController extends Controller
     {
         $agents = User::whereHas('roles', function ($query) {
             $user = Auth::user();
-            $query->where([['name', '=', 'agent'], ['admin_id', '=', $user->id]]);
+            $query->where([['name', '=', 'agent'], ['admin_id', '=', $user->id], ['deleted_at', '=', null]]);
         })->get();
         return view('admin.agentlist')->with(compact('agents'));
     }

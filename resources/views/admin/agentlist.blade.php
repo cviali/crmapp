@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+    @if (session()->has('msg'))
+    <div class="alert alert-success" role="alert">
+        {{session()->get('msg')}}
+    </div>
+    @endif
     <table class="table">
         <thead>
             <tr>
@@ -17,7 +22,9 @@
                 <th scope="row">{{$agent->id}}</th>
                 <td>{{$agent->name}}</td>
                 <td>{{$agent->username}}</td>
-                <td><a class="btn btn-primary" href='/agent-detail/{{$agent->id}}'>Performa</a></td>
+                <td>
+                    <a class="btn btn-primary" href='/agent-detail/{{$agent->id}}'>Performa</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
