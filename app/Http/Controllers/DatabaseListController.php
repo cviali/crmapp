@@ -11,11 +11,12 @@ class DatabaseListController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:admin');
+        $this->middleware('ipcheck');
     }
 
     public function index()
     {
-        $sources = Customer::distinct()->get(['source']);
+        $sources = Customer::where('deleted_at', null)->distinct()->get(['source']);
         return view('admin.databaselist')->with(compact('sources'));
     }
 }

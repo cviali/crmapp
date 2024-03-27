@@ -12,15 +12,16 @@ class AgentController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:agent');
+        $this->middleware('ipcheck');
     }
 
     public function index()
     {
         $currentHandler = Auth::user();
-        $customer = Customer::where([['handler_id', '=', $currentHandler->id], ['status_id', '=', 1]])
+        $customer = Customer::where([['handler_id', '=', $currentHandler->id], ['status_id', '=', 1], ['deleted_at', '=', null]])
             ->first();
         if ($customer == null) {
-            $customer = Customer::where([['status_id', '=', 0]])
+            $customer = Customer::where([['status_id', '=', 0], ['deleted_at', '=', null]])
                 ->first();
             return view('agent.home', compact('customer'));
         };

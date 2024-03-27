@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->integer('handler_id')->unsigned()->nullable();
             $table->integer('status_id')->unsigned();
             $table->string('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -13,11 +13,12 @@ class AgentDetailController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:admin');
+        $this->middleware('ipcheck');
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        User::where('id', $id)->update(['deleted_at' => Carbon::now()]);
+        User::where('id', $request->id)->update(['deleted_at' => Carbon::now()]);
         session()->flash('msg', 'Agent berhasil dihapus.');
         return redirect()->route('agent-list');
     }
@@ -30,17 +31,31 @@ class AgentDetailController extends Controller
         return redirect()->route('agent-list');
     }
 
-    public function index($id)
+    public function filter(Request $request)
     {
-        $date = Carbon::today();
-        $agent = User::where('id', '=', $id)->first();
-        $data = Customer::where([['handler_id', '=', $id], ['updated_at', '>', $date]])->get();
-        // dd($date);
+        $date = Carbon::parse($request->date);
+        $maxDate = Carbon::today();
+        $agent = User::where('id', '=', $request->id)->first();
+        $data = Customer::whereDate('updated_at', '=', $date)->where([['handler_id', '=', $request->id]])->get();
         $total = $data->count();
         $inprogress = $data->where('status_id', '=', 1)->count();
         $active = $data->where('status_id', '=', 2)->count();
         $inactive = $data->where('status_id', '=', 3)->count();
         $notinterested = $data->where('status_id', '=', 4)->count();
-        return view('admin.agentdetail')->with(compact('agent', 'date', 'total', 'inprogress', 'active', 'inactive', 'notinterested'));
+        return view('admin.agentdetail')->with(compact('agent', 'date', 'maxDate', 'total', 'inprogress', 'active', 'inactive', 'notinterested'));
+    }
+
+    public function index($id)
+    {
+        $date = Carbon::today();
+        $maxDate = Carbon::today();
+        $agent = User::where('id', '=', $id)->first();
+        $data = Customer::whereDate('updated_at', '=', $date)->where([['handler_id', '=', $id]])->get();
+        $total = $data->count();
+        $inprogress = $data->where('status_id', '=', 1)->count();
+        $active = $data->where('status_id', '=', 2)->count();
+        $inactive = $data->where('status_id', '=', 3)->count();
+        $notinterested = $data->where('status_id', '=', 4)->count();
+        return view('admin.agentdetail')->with(compact('agent', 'date', 'maxDate', 'total', 'inprogress', 'active', 'inactive', 'notinterested'));
     }
 }

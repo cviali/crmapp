@@ -14,6 +14,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:admin');
+        $this->middleware('ipcheck');
     }
 
     protected function validator(array $data)

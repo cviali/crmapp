@@ -54,8 +54,8 @@
         <a href="/agent-list">
             <div>◀ Kembali</div>
         </a>
-        <div>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#passwordModal">Ganti Password</button>
+        <div class="d-flex flex-wrap justify-content-end" style="gap: 8px;">
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#passwordModal">Ganti Password</button>
             <button class=" btn btn-danger" data-toggle="modal" data-target="#deleteModal">Hapus Agent</button>
         </div>
     </div>
@@ -72,7 +72,14 @@
             <div class="card">
                 <div class="card-body">
                     <div>Tanggal Laporan</div>
-                    <h1>{{date('d-m-Y', strtotime($date))}}</h1>
+                    <form class="form-group d-flex" style="gap: 8px;" role="form" method="POST" action="{{route('agent-filter')}}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$agent->id}}" />
+                        <div class="form-control">
+                            <input style="border: none; width: 100%;" type="date" id="date" name="date" value="{{date('Y-m-d', strtotime($date))}}" max="{{date('Y-m-d', strtotime($maxDate))}}">
+                        </div>
+                        <button class="btn btn-primary" type="submit">Filter Tanggal</button>
+                    </form>
                 </div>
             </div>
         </div>

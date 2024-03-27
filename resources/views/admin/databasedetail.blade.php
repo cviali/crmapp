@@ -6,11 +6,37 @@ use App\User;
 
 @section('content')
 <div class="container">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <form role="form" method="POST" action="{{route('database-delete')}}">
+            <input type="hidden" name="source" value="{{$source}}" />
+            @csrf
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h1>{{$source}}</h1>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center flex-wrap">
+                        <button data-dismiss="modal" aria-label="Close" class="btn btn-secondary mb-2">Batal</button>
+                        <button type="submit" name="status" value="2" class="btn btn-danger mb-2">Hapus</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="d-flex justify-content-between align-items-center mb-3">
         <a href="/database-list">
             <div>◀ Kembali</div>
         </a>
         <div>
+            @if($source != 'manual')
+            <button class=" btn btn-danger" data-toggle="modal" data-target="#deleteModal">Hapus Database</button>
+            @endif
             <a class="btn btn-primary" href="/export-excel/{{$source}}">Export Database</a>
         </div>
     </div>

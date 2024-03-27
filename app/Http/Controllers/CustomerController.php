@@ -12,7 +12,7 @@ class CustomerController extends Controller
     public function startContact(Request $request)
     {
         $handler = Auth::user();
-        $customer = Customer::where([['id', '=', $request->id]])->first();
+        $customer = Customer::where([['id', '=', $request->id], ['deleted_at', '=', null]])->first();
         // dd($customer->handler_id);
         if ($customer->handler_id == null) {
             $customer->update(['status_id' => 1]);
@@ -27,7 +27,7 @@ class CustomerController extends Controller
 
     public function updateContact(Request $request)
     {
-        $customer = Customer::where([['id', '=', $request->id]])->first();
+        $customer = Customer::where([['id', '=', $request->id], ['deleted_at', '=', null]])->first();
         $customer->update(['status_id' => $request->status]);
         if ($request->notes != null) $customer->update(['notes' => $request->notes]);
 
