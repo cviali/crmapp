@@ -22,7 +22,7 @@
                     <div class="modal-body text-center">
                         <h1>{{$admin->name}}</h1>
                         <div class="form-group">
-                            <input id="inputpassword" name="password" type="password" class="form-control" placeholder="Password Baru">
+                            <input id="inputpassword" name="password" type="password" class="form-control" required placeholder="Password Baru">
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center flex-wrap">
