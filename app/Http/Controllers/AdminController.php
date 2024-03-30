@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Imports\CustomerImportClass;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -21,9 +23,16 @@ class AdminController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:30'],
-            'phone' => ['required', 'string', 'max:20', 'unique:customers'],
         ]);
     }
+
+    public function password(Request $request)
+    {
+        User::where('id', $request->id)->update(['password' => bcrypt($request->password)]);
+        session()->flash('msg', 'Password berhasil diupdate.');
+        return redirect()->route('admin-home');
+    }
+
 
     public function addCustomer(Request $request)
     {
@@ -42,6 +51,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.home');
+        $admin = Auth::user();
+        return view('admin.home', with(compact('admin')));
     }
 }

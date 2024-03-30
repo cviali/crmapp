@@ -25,7 +25,6 @@ class AgentDetailController extends Controller
 
     public function password(Request $request)
     {
-        // dd($request->password);
         User::where('id', $request->id)->update(['password' => bcrypt($request->password)]);
         session()->flash('msg', 'Password agent berhasil diupdate.');
         return redirect()->route('agent-list');

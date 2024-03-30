@@ -9,7 +9,6 @@ class WhitelistController extends Controller
 {
     public function add(Request $request)
     {
-        $whitelist = DB::table('whitelist')->get();
         DB::table('whitelist')->insert([
             'ip' => $request->ip,
         ]);

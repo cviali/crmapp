@@ -10,7 +10,8 @@
 
     <form role="form" method="POST" action="{{route('whitelist-add')}}">
         @csrf
-        <div class="form-group d-flex" style="gap: 8px;"><input class="form-control" type="text" name="ip" placeholder="IP Address" />
+        <div class="form-group d-flex" style="gap: 8px;">
+            <input class="form-control" type="text" name="ip" placeholder="IP Address" required />
             <button type="submit" class="btn btn-primary">Tambah</button>
         </div>
     </form>
