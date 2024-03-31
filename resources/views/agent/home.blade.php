@@ -8,6 +8,11 @@
         {{session()->get('msg')}}
     </div>
     @endif
+    @if (session()->has('err'))
+    <div class="alert alert-danger" role="alert">
+        {{session()->get('err')}}
+    </div>
+    @endif
     @if(isset($customer))
     <div class="modal fade" id="followupModal" tabindex="-1" role="dialog" aria-labelledby="followupModalLabel" aria-hidden="true">
         <form role="form" method="POST" action="{{route('update-contact')}}">

@@ -18,6 +18,11 @@ class AgentController extends Controller
 
     public function password(Request $request)
     {
+        // cek akun
+        if (Auth::user()->id != User::where('id', $request->id)->first()->id) {
+            session()->flash('err', 'Anda tidak dapat mengganti password user tersebut.');
+            return redirect()->route('agent-home');
+        }
         User::where('id', $request->id)->update(['password' => bcrypt($request->password)]);
         session()->flash('msg', 'Password berhasil diupdate.');
         return redirect()->route('agent-home');
