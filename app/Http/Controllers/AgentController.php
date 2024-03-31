@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AgentController extends Controller
@@ -13,6 +14,13 @@ class AgentController extends Controller
         $this->middleware('auth');
         $this->middleware('role:agent');
         $this->middleware('ipcheck');
+    }
+
+    public function password(Request $request)
+    {
+        User::where('id', $request->id)->update(['password' => bcrypt($request->password)]);
+        session()->flash('msg', 'Password berhasil diupdate.');
+        return redirect()->route('agent-home');
     }
 
     public function index()

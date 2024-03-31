@@ -23,7 +23,7 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'AdminController@index')->name('admin-home');
-Route::get('/agent', 'AgentController@index');
+Route::get('/agent', 'AgentController@index')->name('agent-home');
 Route::get('/whitelist', 'WhitelistController@index')->name('whitelist');
 Route::get('/agent-list', 'AgentListController@index')->name('agent-list');
 Route::get('/agent-detail/{id}', 'AgentDetailController@index');
@@ -38,6 +38,7 @@ Route::post('/start-contact', 'CustomerController@startContact')->name('start-co
 Route::post('/update-contact', 'CustomerController@updateContact')->name('update-contact');
 Route::post('/agent-password', 'AgentDetailController@password')->name('agent-password');
 Route::post('/admin-password', 'AdminController@password')->name('admin-password');
+Route::post('/update-password', 'AgentController@password')->name('update-password');
 Route::post('/agent-filter', 'AgentDetailController@filter')->name('agent-filter');
 Route::post('/agent-delete', 'AgentDetailController@delete')->name('agent-delete');
 Route::post('/database-delete', 'DatabaseDetailController@delete')->name('database-delete');
