@@ -36,9 +36,10 @@ class AgentController extends Controller
         if ($customer == null) {
             $customer = Customer::where([['status_id', '=', 0], ['deleted_at', '=', null]])
                 ->first();
-            return view('agent.home', compact('customer'));
+            $handler = $currentHandler;
+            return view('agent.home', compact('customer', 'handler'));
         };
-        $handler = $customer->handler_id != null ? User::where('id', '=', $customer->handler_id)->first() : $currentHandler;
+        $handler = $customer->handler_id != null ? User::where('id', '=', $customer->handler_id)->first() : null;
         return view('agent.home', compact('customer', 'handler'));
     }
 }

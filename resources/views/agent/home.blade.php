@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    <input id="phone" type="text" value="{{$customer->phone}}" style="position: absolute; top: 0; left: 0; transform: translate(-100%, -100%); visibility: hidden;">
     @if (session()->has('msg'))
     <div class="alert alert-warning" role="alert">
         {{session()->get('msg')}}
@@ -134,16 +133,4 @@
         </div>
     </div>
 </div>
-<script>
-    function copyToClipboard() {
-        var copyText = document.getElementById("phone");
-
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-
-        navigator.clipboard.writeText(copyText.value);
-
-        alert("Copied the text: " + copyText.value);
-    }
-</script>
 @endsection
