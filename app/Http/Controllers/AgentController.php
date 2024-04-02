@@ -38,7 +38,7 @@ class AgentController extends Controller
                 ->first();
             return view('agent.home', compact('customer'));
         };
-        $handler = $customer->handler_id != null ? User::where('id', '=', $customer->handler_id)->first() : null;
+        $handler = $customer->handler_id != null ? User::where('id', '=', $customer->handler_id)->first() : $currentHandler;
         return view('agent.home', compact('customer', 'handler'));
     }
 }
