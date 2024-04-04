@@ -31,7 +31,7 @@
                         <div class="d-flex justify-content-center" style="gap: 8px;">
                             <h5 class="mb-0">{{$customer->phone}}</h5>
                             <div class="d-flex align-items-center">
-                                <a href="https://wa.me/62{{$customer->phone}}" target="_blank" class="badge badge-success">
+                                <a href="https://wa.me/{{str_starts_with($customer->phone, '62') ? $customer->phone : '62'.$customer->phone}}" target="_blank" class="badge badge-success">
                                     Kontak Whatsapp
                                 </a>
                             </div>

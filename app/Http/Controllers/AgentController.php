@@ -39,6 +39,7 @@ class AgentController extends Controller
             $handler = $currentHandler;
             return view('agent.home', compact('customer', 'handler'));
         };
+        // dd(str_starts_with($customer->phone, '62'));
         $handler = $customer->handler_id != null ? User::where('id', '=', $customer->handler_id)->first() : null;
         return view('agent.home', compact('customer', 'handler'));
     }
