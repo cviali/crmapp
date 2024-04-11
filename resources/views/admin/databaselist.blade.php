@@ -11,7 +11,6 @@
         <thead>
             <tr>
                 <th scope="col">Database</th>
-                <th scope="col">Created At</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -19,7 +18,6 @@
             @foreach($sources as $source)
             <tr>
                 <td>{{$source->source}}</td>
-                <td>{{$source->created_at}}</td>
                 <td><a class="btn btn-primary" href='/database-detail/{{$source->source}}'>Performa</a></td>
             </tr>
             @endforeach
