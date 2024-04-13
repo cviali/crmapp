@@ -27,7 +27,7 @@
     </form>
 </div>
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <form role="form" method="POST" action="/agent-delete/{{$agent->id}}">
+    <form role="form" method="POST" action="{{route('agent-delete')}}">
         <input type="hidden" name="id" value="{{$agent->id}}" />
         @csrf
         <div class="modal-dialog" role="document">
