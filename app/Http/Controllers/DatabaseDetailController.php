@@ -14,7 +14,7 @@ class DatabaseDetailController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:admin');
-        $this->middleware('ipcheck');
+        // $this->middleware('ipcheck');
     }
 
     public function delete(Request $request)

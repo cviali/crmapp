@@ -13,7 +13,7 @@ class AgentController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:agent');
-        $this->middleware('ipcheck');
+        // $this->middleware('ipcheck');
     }
 
     public function password(Request $request)
